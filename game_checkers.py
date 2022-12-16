@@ -48,7 +48,6 @@ class Game:
 			if self.board[to_loc[0]][to_loc[1]] == "--" and get_clicked_row(mouse_pos) <= 3:
 				self.board[to_loc[0]][to_loc[1]] = "bc"
 				self.token_black -= 1
-				self.tokens[1] += 1
 				self.next_turn()
 			self.flag_black_add = False
 		if self.flag_white_add:
@@ -56,7 +55,6 @@ class Game:
 			if self.board[to_loc[0]][to_loc[1]] == "--" and get_clicked_row(mouse_pos) >= 4:
 				self.board[to_loc[0]][to_loc[1]] = "wc"
 				self.token_white -= 1
-				self.tokens[0] += 1
 				self.next_turn()
 			self.flag_white_add = False
 		player = self.players[self.turn % 2]
@@ -144,13 +142,11 @@ class Game:
 					(self.board[int(jump[0])][int(jump[1])] == "BC" and player == "bc") or \
 					(self.board[int(jump[0])][int(jump[1])] == "bc" and player == "BC"):
 				self.token_black += 1
-				self.tokens[1] -= 1
 			if (self.board[int(jump[0])][int(jump[1])] == "wc" and player == "wc") or \
 				(self.board[int(jump[0])][int(jump[1])] == "WC" and player == "WC") or\
 				(self.board[int(jump[0])][int(jump[1])] == "WC" and player == "wc") or\
 				(self.board[int(jump[0])][int(jump[1])] == "wc" and player == "WC"):
 				self.token_white += 1
-				self.tokens[0] -= 1
 			self.board[int(jump[0])][int(jump[1])] = '--'
 			self.selected_token = [to_row, to_col]
 			self.jumping = True
