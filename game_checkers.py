@@ -100,6 +100,12 @@ class Game:
 			jump_col = (to_col - from_col) / 2 + from_col
 			if self.board[int(jump_row)][int(jump_col)].lower() not in ['--']:
 				return True, [jump_row, jump_col]
+		if (((token_char.isupper() and abs(from_row - to_row) == 2) or (player == 'bc' and to_row - from_row == -2) or
+			(player == 'wc' and from_row - to_row == -2)) and abs(from_col - to_col) == 2):
+			jump_row = (to_row - from_row) / 2 + from_row
+			jump_col = (to_col - from_col) / 2 + from_col
+			if self.board[int(jump_row)][int(jump_col)].lower() not in ['--']:
+				return True, [jump_row, jump_col]
 		return False, None
 
 	# Обозначение клеток от a до h и от 1 до 8.
